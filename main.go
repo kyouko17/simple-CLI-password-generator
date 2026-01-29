@@ -7,27 +7,19 @@ import (
 	"strings"
 )
 
+var Whitelist string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@$#%/?-~"
+
 func main() {
-	fmt.Println(CreatePass(16))
+	fmt.Println(PasswordGenerator(8))
 }
-func CreatePass(len int) string {
+func PasswordGenerator(length int) string {
 	var sb strings.Builder
+	max := big.NewInt(int64(len(Whitelist)))
 
-	for range len {
-		rn := randomASCINumber()
-		for rn < 33 {
-			rn = randomASCINumber()
-		}
-		sb.WriteString(string(rn))
+	for range length {
+		n, _ := rand.Int(rand.Reader, max)
+		sb.WriteRune(rune(Whitelist[n.Int64()]))
 	}
+
 	return sb.String()
-}
-func randomASCINumber() rune {
-	max := big.NewInt(127)
-	n, err := rand.Int(rand.Reader, max)
-
-	if err != nil {
-		panic(err)
-	}
-	return rune(n.Int64())
 }
