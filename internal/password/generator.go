@@ -16,7 +16,7 @@ const (
 
 var ErrNotAcceptableLength = errors.New("password length must be between 4 and 32")
 
-func PasswordGenerator(length int) (string, error) {
+func Generate(length int) (string, error) {
 	//Error handle
 	if length < 4 || length > 32 {
 		return "", ErrNotAcceptableLength

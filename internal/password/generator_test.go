@@ -4,7 +4,7 @@ import "testing"
 
 func TestPasswordGenerator(t *testing.T) {
 	t.Run("length of password", func(t *testing.T) {
-		password, err := PasswordGenerator(16)
+		password, err := Generate(16)
 		got := len(password)
 		want := 16
 
@@ -16,7 +16,7 @@ func TestPasswordGenerator(t *testing.T) {
 		}
 	})
 	t.Run("length out of range", func(t *testing.T) {
-		password, err := PasswordGenerator(3)
+		password, err := Generate(3)
 		got := password
 		want := ""
 
