@@ -12,10 +12,10 @@ func main() {
 	length := flag.Int("length", 8, "length of password (4-32)")
 	flag.Parse()
 
-	password, err := password.Generate(*length)
+	pass, err := password.Generate(*length)
 	if err != nil {
 		fmt.Println("error: ", err)
 		os.Exit(1)
 	}
-	fmt.Println("generated password:", password)
+	fmt.Println("generated password:", pass)
 }
