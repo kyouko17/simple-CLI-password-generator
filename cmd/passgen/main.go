@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kyouko17/password_generator/internal/password"
+	"github.com/kyouko17/simple-CLI-password-generator/internal/password"
 )
 
 func main() {
