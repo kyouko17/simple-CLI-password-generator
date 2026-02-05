@@ -1,12 +1,9 @@
-package main
+package password
 
 import (
 	"crypto/rand"
 	"errors"
-	"flag"
-	"fmt"
 	"math/big"
-	"os"
 )
 
 const (
@@ -18,18 +15,6 @@ const (
 )
 
 var ErrNotAcceptableLength = errors.New("password length must be between 4 and 32")
-
-func main() {
-	length := flag.Int("length", 8, "length of password (4-32)")
-	flag.Parse()
-
-	password, err := PasswordGenerator(*length)
-	if err != nil {
-		fmt.Println("error: ", err)
-		os.Exit(1)
-	}
-	fmt.Println("generated password:", password)
-}
 
 func PasswordGenerator(length int) (string, error) {
 	//Error handle
